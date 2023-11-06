@@ -1,5 +1,5 @@
-resource "aws_cognito_user_pool" "royal_user_pool" {
-  name = "royalUserPool"
+resource "aws_cognito_user_pool" "fastfoodsystem_user_pool" {
+  name = "fastFoodSystemUserPool"
 
   email_verification_subject = "Your Verification Code"
   email_verification_message = "Please use the following code: {####}"
@@ -43,11 +43,26 @@ resource "aws_cognito_user_pool" "royal_user_pool" {
       max_length = 256
     }
   }
+
+  schema {
+    attribute_data_type      = "String"
+    developer_only_attribute = false
+    mutable                  = true
+    name                     = "cpf"
+    required                 = false
+
+
+    string_attribute_constraints {
+      min_length = 11
+      max_length = 11
+    }
+  }
+
 }
 
-resource "aws_cognito_user_pool_client" "royal_user_pool_client" {
-  name                         = "royalUserPoolClient"
+resource "aws_cognito_user_pool_client" "fastfoodsystem_user_pool_client" {
+  name                         = "fastFoodSystemUserPoolClient"
   explicit_auth_flows          = ["ALLOW_USER_PASSWORD_AUTH", "ALLOW_REFRESH_TOKEN_AUTH"]
 
-  user_pool_id = aws_cognito_user_pool.royal_user_pool.id
+  user_pool_id = aws_cognito_user_pool.fastfoodsystem_user_pool.id
 }

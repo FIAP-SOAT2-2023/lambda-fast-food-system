@@ -1,6 +1,6 @@
 resource "aws_api_gateway_rest_api" "rest_api" {
-  name        = "royal-api"
-  description = "Royal API Gateway"
+  name        = "FastFood API"
+  description = "FastFood API"
 }
 
 resource "aws_api_gateway_authorizer" "api_authorizer" {
